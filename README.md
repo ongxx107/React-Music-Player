@@ -1,68 +1,49 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Music Player
 
-In the project directory, you can run:
+Music player app made with React and Spotify API. Spotify API requires client id and client secret to generate the access token. This app is created to search tracks and artists. User can retrieve information about artist and his/her top tracks. Simple features like play and pause button are designed in this app.
 
-### `npm start`
+## 1. Getting authentication
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 1.1. Getting client id and client secret on Spotify
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Here is the [link](https://developer.spotify.com/my-applications/). After you log onto your profile, you are asked to create a new client id. Then you can get your client_id & client_secret. You have to configure Redirect URIs on your Spotify settings, for this case, you can generate the access token on http://localhost:8888/callback/ as redirect URI.
 
-### `npm test`
+### 1.2. Getting Spotify access token
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Download or git clone [this repository](https://github.com/spotify/web-api-auth-examples). Next, run:
+```
+npm install
+```
+When you finish installing, open authorization_code/app.js. Insert your given client_id, client_secret, redirect URI as the string type.
 
-### `npm run build`
+Then open terminal in authorization_code directory. Run:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+node app.js
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Open localhost:8888. Click the Log In Spotify button and accept its terms and conditions. It will redirect to your user profile page. Next copy the access token that's in search bar of your browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Note: the access token is only valid for one hour unless you configure refresh token.
 
-### `npm run eject`
+## 2. Music Player App
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 2.1. Installing
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Clone this repository and open terminal in this main directory. Run:
+```
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 2.2. Modifying the token
+Now paste token as a string in src/App.js. You need to change the string variable called accessToken.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 2.3. Starting the app
+Finally, start the app with:
+```
+npm start
+```
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The server runs on port localhost:3000.
